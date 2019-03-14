@@ -19,7 +19,7 @@ public:
   cv::Mat RegionOfInterestDetection(cv::Mat img_edges, int h, int w);
 
   /* Identify lines which indicate lane lines*/
-  std::vector<cv::Vec4i>  HoughLines(cv::Mat masked_image);
+  std::vector<cv::Vec4i> HoughLines(cv::Mat masked_image);
 
   cv::Mat DrawLines(cv::Mat original_image, std::vector<cv::Vec4i> lines, cv::Mat masked_image);
 };

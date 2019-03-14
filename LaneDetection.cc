@@ -48,14 +48,13 @@ cv::Mat LaneDetection::RegionOfInterestDetection(cv::Mat edges, int height, int 
 {
 
     cv::Mat mask = cv::Mat::zeros(edges.size(), edges.type());
-    int npts = 3;
-    cv::Point pts[npts] = {
+    cv::Point pts[3] = {
         cv::Point(0, height),
         cv::Point(width / 2, height / 2),
         cv::Point(width, height),
     };
 
-    cv::fillConvexPoly(mask, pts, npts, cv::Scalar(255, 0, 0));
+    cv::fillConvexPoly(mask, pts, 3, cv::Scalar(255, 0, 0));
 
     cv::Mat masked_image;
 
