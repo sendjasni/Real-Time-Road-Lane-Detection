@@ -7,7 +7,6 @@ OpenCV implementation of a real time lane detection using the [PTask]((https://g
 - Introduction
 - Dependencies
 - Build
-- License
 
 ## Introduction
 
@@ -23,3 +22,14 @@ OpenCV implementation of a real time lane detection using the [PTask]((https://g
   - Periodic Real-Time Task interface facility to pthreads, [click here for installation instructions](https://github.com/glipari/ptask#compiling)
 - OpenCv
   - Linux :  [click here for installation instructions](https://docs.opencv.org/3.4/d7/d9f/tutorial_linux_install.html)
+
+## Basic Build Instructions
+
+CMake is used as its build system for generating makefiles.
+
+```shell
+git clone https://github.com/sendjasni/Real-Time-Road-Lane-Detection.git
+mkdir build && cd build
+cmake .. && make
+sudo ./lanedetection
+```
