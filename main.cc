@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
     // }
     cv::Mat input_frame;
 
-    input_frame = cv::imread("Data/solidWhiteCurve.jpg");
+    input_frame = cv::imread("../Data/solidWhiteCurve.jpg");
 
     if (!input_frame.empty())
     {

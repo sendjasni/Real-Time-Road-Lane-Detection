@@ -48,13 +48,25 @@ cv::Mat LaneDetection::RegionOfInterestDetection(cv::Mat edges, int height, int 
 {
 
     cv::Mat mask = cv::Mat::zeros(edges.size(), edges.type());
-    cv::Point pts[3] = {
-        cv::Point(0, height),
-        cv::Point(width / 2, height / 2),
-        cv::Point(width, height),
-    };
 
-    cv::fillConvexPoly(mask, pts, 3, cv::Scalar(255, 0, 0));
+    int npts[] = {8};
+    int shift_x = 46;
+    int shift_y = 45;
+
+    cv::Point points[1][8];
+
+    points[0][0] = cv::Point(width / 2 - shift_x, height / 2 + shift_y);
+    points[0][1] = cv::Point(50, height);
+    points[0][2] = cv::Point(50, height);
+    points[0][3] = cv::Point(width - 50, height);
+    points[0][4] = cv::Point(width - 50, height);
+    points[0][5] = cv::Point(width / 2 + shift_x, height / 2 + shift_y);
+    points[0][6] = cv::Point(width / 2 + shift_x, height / 2 + shift_y);
+    points[0][7] = cv::Point(width / 2 - shift_x, height / 2 + shift_y);
+
+    const cv::Point *vertices[1] = {points[0]};
+
+    cv::fillPoly(mask, vertices, npts, 1, cv::Scalar(255), 8);
 
     cv::Mat masked_image;
 
@@ -97,7 +109,7 @@ cv::Mat LaneDetection::DrawLines(cv::Mat original_image, std::vector<cv::Vec4i> 
     for (size_t i = 0; i < lines.size(); i++)
     {
         cv::Vec4i l = lines[i];
-        cv::line(line_image, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), cv::Scalar(255, 0, 0), 2, CV_AA);
+        cv::line(line_image, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), cv::Scalar(0, 0, 255), 2, CV_AA);
     }
     double alpha = 0.8;
     double beta = 1;

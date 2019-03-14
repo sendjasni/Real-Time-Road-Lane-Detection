@@ -1,9 +1,13 @@
 #pragma once
 
-#include <opencv2/highgui/highgui.hpp>
 #include <iostream>
 #include <vector>
-#include "opencv2/opencv.hpp"
+#include <opencv2/opencv.hpp>
+#include <opencv2/core.hpp>
+#include <opencv2/videoio.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+#include <opencv2/imgcodecs.hpp>
 
 class LaneDetection
 {
@@ -21,5 +25,6 @@ public:
   /* Identify lines which indicate lane lines*/
   std::vector<cv::Vec4i> HoughLines(cv::Mat masked_image);
 
+  /* Draw the dtected lines on the initial image */
   cv::Mat DrawLines(cv::Mat original_image, std::vector<cv::Vec4i> lines, cv::Mat masked_image);
 };
